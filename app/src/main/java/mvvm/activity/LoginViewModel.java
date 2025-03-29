@@ -1,15 +1,11 @@
 package mvvm.activity;
 
-import android.text.TextUtils;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import java.util.ArrayList;
 import mvvm.data.LoginRepository;
-import mvvm.data.User;
 
 public class LoginViewModel extends ViewModel {
 
-    MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
     MutableLiveData<String> loginResult = new MutableLiveData<>();
     LoginRepository loginRepository;
 
@@ -17,22 +13,10 @@ public class LoginViewModel extends ViewModel {
         this.loginRepository = loginRepository;
     }
 
-    public void loginDataChanged(String username, String password) {
-        if (TextUtils.isEmpty(username)) {
-            loginFormState.setValue(new LoginFormState("无效的用户名", null));
-        } else if (password.trim().length() < 5) {
-            loginFormState.setValue(new LoginFormState(null, "密码不能小于5位"));
-        } else {
-            loginFormState.setValue(new LoginFormState(true));
-        }
-    }
 
-    public void login(String username, String password) {
-        User user = new User(username);
-        loginResult.setValue(user.getName());
-
-        ArrayList<User>  aa = new ArrayList();
-        aa.add(user);
+    public void login(String username) {
+        String result =  loginRepository.login(username);
+        loginResult.setValue(result);
     }
 
     //布局文件绑定数据时，必须要有get方法
