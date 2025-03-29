@@ -2,8 +2,7 @@ package mvvm.data;
 
 public class LoginRepository {
 
-    private static volatile LoginRepository instance = new LoginRepository();
-    private User user = null;
+    private static final LoginRepository instance = new LoginRepository();
 
     private LoginRepository( ) { }
 
@@ -11,13 +10,8 @@ public class LoginRepository {
         return instance;
     }
 
-    public User login(String username, String password) {
-        user = new User("Hunter");
-        return user;
-    }
-
-    public void logout() {
-        user = null;
+    public String login(String username) {
+        return  "用户: " + username;
     }
 
 }

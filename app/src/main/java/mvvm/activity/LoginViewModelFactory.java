@@ -5,10 +5,9 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import mvvm.data.LoginRepository;
 
-
 /**
- * ViewModel provider factory to instantiate LoginViewModel.
- * Required given LoginViewModel has a non-empty constructor
+ * 默认Factory创建的ViewModel，是使用其【无参的构造函数】
+ * 若要使用【自定义的构造函数】创建ViewModel，可使用自定义的Factory
  */
 public class LoginViewModelFactory implements ViewModelProvider.Factory {
 
