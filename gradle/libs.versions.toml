@@ -1,0 +1,7 @@
+[versions]
+appcompat = "1.8.0"
+gradle = "9.5.1"
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
